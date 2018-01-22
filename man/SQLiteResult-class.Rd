@@ -19,7 +19,7 @@
 \S4method{dbBind}{SQLiteResult}(res, params, ...)
 
 \S4method{dbFetch}{SQLiteResult}(res, n = -1, ...,
-  row.names = pkgconfig::get_config("RSQLite::row.names.query", FALSE))
+  row.names = getOption("RSQLite.row.names.query", FALSE))
 
 \S4method{dbClearResult}{SQLiteResult}(res, ...)
 

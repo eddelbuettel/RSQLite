@@ -27,7 +27,6 @@ Imports:
     blob (>= 1.1),
     DBI (>= 0.4-9),
     methods,
-    pkgconfig,
     Rcpp (>= 0.12.7)
 LinkingTo: Rcpp, BH, plogr
 Remotes: 

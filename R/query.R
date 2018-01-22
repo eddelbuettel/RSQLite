@@ -89,7 +89,7 @@ db_bind <- function(res, params, ..., allow_named_superset) {
 #' @export
 #' @rdname SQLiteResult-class
 setMethod("dbFetch", "SQLiteResult", function(res, n = -1, ...,
-                                              row.names = pkgconfig::get_config("RSQLite::row.names.query", FALSE)) {
+                                              row.names = getOption("RSQLite.row.names.query", FALSE)) {
   row.names <- compatRowNames(row.names)
   if (length(n) != 1) stopc("n must be scalar")
   if (n < -1) stopc("n must be nonnegative or -1")

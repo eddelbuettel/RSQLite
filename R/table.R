@@ -58,7 +58,7 @@ NULL
 #' dbDisconnect(con)
 setMethod("dbWriteTable", c("SQLiteConnection", "character", "data.frame"),
   function(conn, name, value, ...,
-           row.names = pkgconfig::get_config("RSQLite::row.names.table", FALSE),
+           row.names = getOption("RSQLite.row.names.table", FALSE),
            overwrite = FALSE, append = FALSE,
            field.types = NULL, temporary = FALSE) {
 
@@ -252,7 +252,7 @@ setMethod("dbWriteTable", c("SQLiteConnection", "character", "character"),
 #' @rdname SQLiteConnection-class
 #' @export
 setMethod("sqlData", "SQLiteConnection", function(con, value,
-                                                  row.names = pkgconfig::get_config("RSQLite::row.names.query", FALSE),
+                                                  row.names = getOption("RSQLite.row.names.query", FALSE),
                                                   ...) {
   value <- sql_data(value, row.names)
   value <- quote_string(value, con)
@@ -296,7 +296,7 @@ check_quoted_identifier <- function(name) {
 #' dbDisconnect(db)
 setMethod("dbReadTable", c("SQLiteConnection", "character"),
   function(conn, name, ...,
-           row.names = pkgconfig::get_config("RSQLite::row.names.table", FALSE),
+           row.names = getOption("RSQLite.names.table", FALSE),
            check.names = TRUE, select.cols = NULL) {
     name <- check_quoted_identifier(name)
 

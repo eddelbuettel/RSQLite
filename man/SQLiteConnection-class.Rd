@@ -31,7 +31,7 @@
   params = NULL, ...)
 
 \S4method{sqlData}{SQLiteConnection}(con, value,
-  row.names = pkgconfig::get_config("RSQLite::row.names.query", FALSE), ...)
+  row.names = getOption("RSQLite.row.names.query", FALSE), ...)
 
 \S4method{dbRemoveTable}{SQLiteConnection,character}(conn, name, ...)
 
