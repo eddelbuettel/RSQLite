@@ -32,7 +32,7 @@ test_that("attempting to change schema with pending rows generates warning", {
 
 
 test_that("simple position binding works", {
-  memoise::forget(warning_once)
+  #memoise::forget(warning_once)
   con <- dbConnect(SQLite(), ":memory:")
   on.exit(dbDisconnect(con), add = TRUE)
 
@@ -47,7 +47,7 @@ test_that("simple position binding works", {
 })
 
 test_that("simple named binding works", {
-  memoise::forget(warning_once)
+  #memoise::forget(warning_once)
   con <- dbConnect(SQLite(), ":memory:")
   on.exit(dbDisconnect(con), add = TRUE)
 
@@ -76,7 +76,7 @@ test_that("named binding errors if missing name", {
 })
 
 test_that("one row per bound select, with factor", {
-  memoise::forget(warning_once)
+  #memoise::forget(warning_once)
   con <- bind_select_setup()
   on.exit(dbDisconnect(con), add = TRUE)
 
@@ -90,7 +90,7 @@ test_that("one row per bound select, with factor", {
 })
 
 test_that("one row per bound select", {
-  memoise::forget(warning_once)
+  #memoise::forget(warning_once)
   con <- bind_select_setup()
   on.exit(dbDisconnect(con), add = TRUE)
 
@@ -108,21 +108,21 @@ test_that("failed matches are silently dropped", {
   on.exit(dbDisconnect(con), add = TRUE)
   sql <- "SELECT * FROM t1 WHERE id = ?"
 
-  memoise::forget(warning_once)
+  #memoise::forget(warning_once)
   expect_warning(
     df1 <- dbGetPreparedQuery(con, sql, data.frame(id = I("X"))),
     "deprecated")
   expect_equal(nrow(df1), 0)
   expect_equal(names(df1), c("id", "x", "y"))
 
-  memoise::forget(warning_once)
+  #memoise::forget(warning_once)
   expect_warning(
     df2 <- dbGetPreparedQuery(con, sql, data.frame(id = I(c("X", "Y")))),
     "deprecated")
   expect_equal(nrow(df2), 0)
   expect_equal(names(df2), c("id", "x", "y"))
 
-  memoise::forget(warning_once)
+  #memoise::forget(warning_once)
   expect_warning(
     df3 <- dbGetPreparedQuery(con, sql, data.frame(id = I(c("X", "a", "Y")))),
     "deprecated")
@@ -131,7 +131,7 @@ test_that("failed matches are silently dropped", {
 })
 
 test_that("NA matches NULL", {
-  memoise::forget(warning_once)
+  #memoise::forget(warning_once)
   con <- bind_select_setup()
   on.exit(dbDisconnect(con), add = TRUE)
 
