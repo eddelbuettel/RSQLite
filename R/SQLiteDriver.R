@@ -1,7 +1,7 @@
 #' @useDynLib RSQLite, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
 #' @importFrom bit64 integer64
-#' @importFrom blob blob
+# ' @ importFrom blob blob
 NULL
 
 #' Class SQLiteDriver (and methods)
@@ -30,7 +30,7 @@ setMethod("dbDataType", "SQLiteDriver", function(dbObj, obj, ...) {
     double = "REAL",
     character = "TEXT",
     logical = "INTEGER",
-    list = "BLOB",
+    #list = "BLOB",
     raw = "TEXT",
     stop("Unsupported type", call. = FALSE)
   )

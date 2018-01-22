@@ -25,7 +25,7 @@ check_affinity_get <- function(affinity, type,
   expect_equal(class(dbGetQuery(con, "SELECT * FROM a LIMIT 0")$a), type)
   expect_equal(class(dbGetQuery(con, "SELECT * FROM a LIMIT 1")$a), type)
   expect_equal(class(dbGetQuery(con, "SELECT * FROM a LIMIT 2")$a), integer_type)
-  expect_equal(class(dbGetQuery(con, "SELECT * FROM a LIMIT 3")$a), blob_integer_type)
+  #expect_equal(class(dbGetQuery(con, "SELECT * FROM a LIMIT 3")$a), blob_integer_type)
   expect_equal(class(dbGetQuery(con, "SELECT * FROM a LIMIT 4")$a), real_type)
   expect_equal(class(dbGetQuery(con, "SELECT * FROM a LIMIT 5")$a), real_type)
   expect_equal(class(dbGetQuery(con, "SELECT * FROM a LIMIT 6")$a), real_type)
@@ -59,10 +59,10 @@ check_affinity_fetch <- function(affinity, type,
   expect_equal(class(dbFetch(rs, 1)$a), real_type)
   expect_equal(class(dbFetch(rs, 1)$a), real_type)
   expect_equal(class(dbFetch(rs, 1)$a), real_type)
-  expect_warning(
-    expect_equal(class(dbFetch(rs, 1)$a), real_type),
-    if (type == "blob") NA else "coercing"
-  )
+  ## expect_warning(
+  ##   expect_equal(class(dbFetch(rs, 1)$a), real_type),
+  ##   if (type == "blob") NA else "coercing"
+  ## )
   expect_equal(class(dbFetch(rs, 1)$a), real_type)
   dbClearResult(rs)
 }
@@ -77,10 +77,10 @@ test_that("affinity checks for dbGetQuery()", {
   check_affinity_get("FLOA", "numeric")
   check_affinity_get("DOUB", "numeric")
   check_affinity_get("NUMERIC", "numeric", "numeric", "integer")
-  expect_warning(
-    check_affinity_get("BLOB", "blob", "numeric", "integer", "numeric"),
-    "coercing"
-  )
+  ## expect_warning(
+  ##   check_affinity_get("BLOB", "blob", "numeric", "integer", "numeric"),
+  ##   "coercing"
+  ## )
 })
 
 test_that("affinity checks for dbFetch()", {
@@ -93,10 +93,10 @@ test_that("affinity checks for dbFetch()", {
   check_affinity_fetch("FLOA", "numeric")
   check_affinity_fetch("DOUB", "numeric")
   check_affinity_fetch("NUMERIC", "numeric", "numeric", "integer")
-  expect_warning(
-    check_affinity_fetch("BLOB", "blob", "blob"),
-    "coercing"
-  )
+  ## expect_warning(
+  ##   check_affinity_fetch("BLOB", "blob", "blob"),
+  ##   "coercing"
+  ## )
 })
 
 test_that("affinity checks for inline queries", {
