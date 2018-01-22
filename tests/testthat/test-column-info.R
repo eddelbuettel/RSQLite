@@ -5,7 +5,7 @@ test_that("can extract column info", {
   on.exit(dbDisconnect(db))
 
   df <- data.frame(
-    a = 1L, b = 2, c = "three", d = I(list(raw(4))),
+    a = 1L, b = 2, c = "three", #d = I(list(raw(4))),
     stringsAsFactors = FALSE
   )
   dbWriteTable(db, "test", df)

@@ -37,18 +37,18 @@ test_that("dates are stored as REAL", {
   expect_equal(sqliteDataType(Sys.time()), "REAL")
 })
 
-# Tested by DBItest
-test_that("AsIs class is ignored", {
-  df <- data.frame(
-    a = I(1:2),
-    b = I(c("x", "y")),
-    #c = I(list(raw(3), raw(1))),
-    d = I(c(1.1, 2.2))
-  )
-  got <- sapply(df, sqliteDataType)
-  expect_equal(got, c(a="INTEGER", b="TEXT", #c="BLOB",
-                      d="REAL"))
-})
+## # Tested by DBItest
+## test_that("AsIs class is ignored", {
+##   df <- data.frame(
+##     a = I(1:2),
+##     b = I(c("x", "y")),
+##     #c = I(list(raw(3), raw(1))),
+##     d = I(c(1.1, 2.2))
+##   )
+##   got <- sapply(df, sqliteDataType)
+##   expect_equal(got, c(a="INTEGER", b="TEXT", #c="BLOB",
+##                       d="REAL"))
+## })
 
 test_that("unknown classes default to storage.mode()", {
   expect_equal(sqliteDataType(Sys.Date()), "REAL")

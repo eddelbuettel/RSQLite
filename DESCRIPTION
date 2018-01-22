@@ -18,19 +18,15 @@ Description: Embeds the 'SQLite' database engine in R and
 Depends:
     R (>= 3.1.0)
 Suggests:
-    DBItest,
     knitr,
     rmarkdown,
     testthat
 Imports:
     bit64,
-    blob (>= 1.1),
     DBI (>= 0.4-9),
     methods,
     Rcpp (>= 0.12.7)
 LinkingTo: Rcpp, BH, plogr
-Remotes: 
-    rstats-db/DBItest
 Encoding: UTF-8
 License: LGPL (>= 2)
 URL: https://github.com/rstats-db/RSQLite
