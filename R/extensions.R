@@ -17,6 +17,7 @@
 #' @param db A \code{\linkS4class{SQLiteConnection}} object to load these extensions into.
 #' @export
 #' @examples
+#' \dontrun{
 #' library(DBI)
 #' db <- RSQLite::datasetsDb()
 #' RSQLite::initExtension(db)
@@ -24,6 +25,7 @@
 #' dbGetQuery(db, "SELECT stdev(mpg) FROM mtcars")
 #' sd(mtcars$mpg)
 #' dbDisconnect(db)
+#' }
 initExtension <- function(db) {
   if (!db@loadable.extensions) {
     stop("Loadable extensions are not enabled for this db connection",

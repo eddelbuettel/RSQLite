@@ -28,6 +28,7 @@ upper_quartile}
 }
 
 \examples{
+\dontrun{
 library(DBI)
 db <- RSQLite::datasetsDb()
 RSQLite::initExtension(db)
@@ -35,4 +36,5 @@ RSQLite::initExtension(db)
 dbGetQuery(db, "SELECT stdev(mpg) FROM mtcars")
 sd(mtcars$mpg)
 dbDisconnect(db)
+}
 }
