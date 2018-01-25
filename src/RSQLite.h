@@ -7,7 +7,7 @@
 #endif
 
 #include <Rcpp.h>
-#include <plogr.h>
+// #include <plogr.h>
 
 // Included here because they need -Wno-error,
 // which is active only for precompiled headers on my system

@@ -20,7 +20,7 @@ groups_(0),
 types_(get_initial_field_types(cache.ncols_))
 {
 
-  LOG_DEBUG << sql;
+  //LOG_DEBUG << sql;
 
   try {
     if (cache.nparams_ == 0) {
@@ -34,7 +34,7 @@ types_(get_initial_field_types(cache.ncols_))
 }
 
 SqliteResultImpl::~SqliteResultImpl() {
-  LOG_VERBOSE;
+  //LOG_VERBOSE;
 
   try {
     sqlite3_finalize(stmt);
@@ -190,7 +190,7 @@ void SqliteResultImpl::set_params(const List& params) {
 }
 
 bool SqliteResultImpl::bind_row() {
-  LOG_VERBOSE << "groups: " << group_ << "/" << groups_;
+  //LOG_VERBOSE << "groups: " << group_ << "/" << groups_;
 
   if (group_ >= groups_)
     return false;
@@ -207,7 +207,7 @@ bool SqliteResultImpl::bind_row() {
 }
 
 void SqliteResultImpl::bind_parameter_pos(int j, SEXP value_) {
-  LOG_VERBOSE << "TYPEOF(value_): " << TYPEOF(value_);
+  //LOG_VERBOSE << "TYPEOF(value_): " << TYPEOF(value_);
 
   if (TYPEOF(value_) == LGLSXP) {
     int value = LOGICAL(value_)[group_];
@@ -270,7 +270,7 @@ List SqliteResultImpl::fetch_rows(const int n_max, int& n) {
   }
 
   while (!complete_) {
-    LOG_VERBOSE << nrows_ << "/" << n;
+    //LOG_VERBOSE << nrows_ << "/" << n;
 
     data.set_col_values();
     step();
@@ -279,7 +279,7 @@ List SqliteResultImpl::fetch_rows(const int n_max, int& n) {
       break;
   }
 
-  LOG_VERBOSE << nrows_;
+  //LOG_VERBOSE << nrows_;
 
   return data.get_data(types_);
 }
@@ -290,7 +290,7 @@ void SqliteResultImpl::step() {
 }
 
 bool SqliteResultImpl::step_run() {
-  LOG_VERBOSE;
+  //LOG_VERBOSE;
 
   int rc = sqlite3_step(stmt);
 
@@ -311,7 +311,7 @@ bool SqliteResultImpl::step_done() {
   if (!more_params)
     complete_ = true;
 
-  LOG_VERBOSE << "group: " << group_ << ", more_params: " << more_params;
+  //LOG_VERBOSE << "group: " << group_ << ", more_params: " << more_params;
   return more_params;
 }
 
