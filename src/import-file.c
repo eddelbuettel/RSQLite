@@ -18,7 +18,8 @@
 
 #include <R.h>
 #include <Rinternals.h>
-#include "vendor/sqlite3/sqlite3.h"
+//#include "vendor/sqlite3/sqlite3.h"
+#include <sqlite3.h>
 
 char* RS_sqlite_getline(FILE* in, const char* eol);
 
