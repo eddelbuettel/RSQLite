@@ -1,20 +1,22 @@
 Package: RSQLite
-Version: 2.0-10
-Date: 2017-09-22
-Title: 'SQLite' Interface for R
+Version: 2.0-10.1
+Date: 2018-01-27
+Title: 'SQLite' Interface for R ("SSQLighter Variant")
 Authors@R: c(
-    person("Kirill", "Müller", role = c("aut", "cre"), email = "krlmlr+r@mailbox.org"),
+    person("Kirill", "Müller", role = c("aut"), email = "krlmlr+r@mailbox.org"),
     person("Hadley", "Wickham", role = c("aut")),
     person(c("David", "A."), "James", role = "aut"),
     person("Seth", "Falcon", role = "aut"),
-    person(family = "SQLite Authors", role = "ctb", comment = "for the included SQLite sources"),
-    person("Liam", "Healy", role = "ctb", comment = "for the included SQLite sources"),
     person(family = "R Consortium", role = "cph"),
-    person(family = "RStudio", role = "cph")
+    person(family = "RStudio", role = "cph"),
+    person("Dirk", "Eddelbuettel", role= "ctb,cre")
     )
 Description: Embeds the 'SQLite' database engine in R and
-    provides an interface compliant with the 'DBI' package. The
-    source for the 'SQLite' engine is included.
+    provides an interface compliant with the 'DBI' package. Note that
+    this version is a *highly experiemental* fork of the official CRAN
+    package undertaken primarily to examine if dependencies could be
+    reduced. It is currently Unix-only, uses the system SQLite3 library,
+    and remove a few (spurious to me) dependencies.
 Depends:
     R (>= 3.1.0)
 Suggests:
