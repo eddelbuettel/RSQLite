@@ -18,7 +18,7 @@ class DbConnection : boost::noncopyable {
 public:
   // Create a new connection handle
   DbConnection(const std::string& path, bool allow_ext,
-                   int flags, const std::string& vfs = "");
+               int flags, const std::string& vfs = "");
   ~DbConnection();
 
 public:
@@ -27,6 +27,9 @@ public:
 
   // Is the connection valid?
   bool is_valid() const;
+
+  // Fail if the connection is invalid
+  void check_connection() const;
 
   // Get the last exception as a string
   std::string getException() const;
